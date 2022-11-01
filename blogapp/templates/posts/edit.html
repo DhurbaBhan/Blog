@@ -1,0 +1,35 @@
+{% extends 'layouts/base.html' %}
+{% block title %}
+Posts|Edit
+{% endblock %}
+
+{% block content %}
+        <div class="row mt-4">
+            <a href="{% url 'post_index' %}" class="btn btn-primary text-uppercase" style="background-color:rgb(13, 122, 95)">Back</a>
+            <div class="card">
+                <div class="card-body">
+                    <form action="{% url 'post_update' %}" method='POST'>
+                        {% csrf_token %}
+                        <input type="hidden" name="post_id" value="{{post.id}}">
+                        <div class="form-group mb-3">
+                            <label for="post_title">Post Title</label>
+                            <input type="text" name="post_title" value="{{post.post_title}}" class="form-control">
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="post_description">Post Description</label>
+                            <input type="text" name="post_description" value="{{post.post_description}}" class="form-control">
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="slug">Post Slug</label>
+                            <input type="text" name="slug" value="{{post.slug}}" class="form-control">
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="post_status">Post Status</label>
+                            <input type="text" name="post_status" value="{{post.post_status}}" class="form-control">
+                        </div>
+                        <input type="submit" value='Update' class="btn btn-primary mt-3" style="background-color:rgb(13, 122, 95)">
+                    </form>
+                </div>
+            </div>
+        </div>
+{% endblock %}

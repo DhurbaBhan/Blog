@@ -1,0 +1,22 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% block title %}
+Posts|Show
+{% endblock title%}
+
+{% block content %}
+        <div class="row mt-4">
+            <a href="{% url 'post_index' %}" class="btn btn-primary text-uppercase" style="background-color:rgb(13, 122, 95)">Go to Post List</a>
+            <div class="card">
+                <div class="card-header">
+                    <h1>{{ post.post_title }}</h1>
+                </div>
+
+                <div class="card-body">
+                    <p>{{post.post_description}}</p>
+                    <p>{{post.slug}}</p>
+                    <p>{{post.post_status}}</p>
+                </div>
+            </div>
+        </div>
+  {% endblock %}

@@ -1,0 +1,61 @@
+{% extends 'layouts/base.html' %}
+{%load static%}
+{%static "images/post" as baseUrl %}
+{% block title %}
+
+Posts|List
+{% endblock %}
+
+{% block content %}
+<div class="row mt-3">
+    <a href="{% url 'post_create' %}" class='btn btn-primary' style="background-color:rgb(13, 122, 95)">Create New</a>
+    <div class="card">
+        <div class="card-header">
+            <h4 style="color:red">
+                <u>
+                Post List
+                </u>
+            </h4>
+        </div>
+        <div class="card-body">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                    <td>S.N.</td>
+                    <td>Title</td>
+                    <td>Description</td>
+                    <td>Slug</td>
+                    <td>Image</td>
+                    <td>Status</td>
+                    <td>Date</td>
+                    <td>Action</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for post in posts %}
+                    <tr>
+                        <td>{{forloop.counter}}</td>
+                        <td>{{post.post_title}}</td>
+                        <td>{{post.post_description}}</td>
+                        <td>{{post.slug}}</td>
+                        <td>
+                
+                            <img src="{{post.post_image.url}}" class="prod-size"height="45" width="45" alt="" >
+                       
+                        </td>
+                        <td>{{post.post_status}}</td>
+                        <td>{{post.created_at}}</td>
+                        <td>
+                            <a href="{% url 'post_edit' post.id %}">Edit</a>
+                            <a href="{% url 'post_show' post.id %}">Show</a>
+                            <a href="{% url 'post_delete' post.id %}">Delete</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+       

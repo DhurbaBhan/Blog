@@ -1,0 +1,23 @@
+{% extends 'layouts/base.html' %}
+{% block title %}
+Post|Create
+{% endblock %}
+
+{% block content%}
+    <div class="row mt-3">
+        <a href="{% url 'post_index' %}" class="btn btn-primary text-uppercase" style="background-color:rgb(13, 122, 95)">Go to Post List</a>
+        <div class="card">
+            <h5 style="color:rgb(26, 121, 158)"><u>Fill all the Details for New Post</u></h5>
+            <div class="card-body">
+                <form action="{% url 'post_create' %}" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{form.as_p}}
+                    <input type="submit" value='CREATE' class="btn btn-primary" style="background-color:rgb(13, 122, 95)" >
+                </form>
+            </div>
+            {%if message %}
+                {{message}}
+            {% endif %}  
+        </div>
+    </div>
+{%endblock%}

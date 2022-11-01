@@ -1,0 +1,18 @@
+{% extends 'layouts/base.html' %}
+{% block title %}
+Dashboard
+{% endblock %}
+
+{% block content %}
+<h3> Layout Implemented </h3>
+<div class="container">
+  <div class="row">
+      {% if success_msg %}
+      <div class="alert alert-success text-center" role="alert">
+          {{success_msg}}
+        </div>  
+      {% endif %}
+
+  </div>
+</div>
+{% endblock %}
